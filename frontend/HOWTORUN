@@ -1,0 +1,19 @@
+1. build project menggunakan perintah
+=> npm run build
+2. setelah build berhasil, akan dibuatkan folder "dist"
+3. copy folder "dist" di project react ke /var/www/lms-dbt-front menggunakan perintah
+==> sudo cp -r /home/maleo/lms-student-dbt/frontend/dist/. /var/www/lms-dbt-front/
+berikut konfigurasi nginx 
+4. server{
+        listen 3000 default_server; ## running di port 3000
+        root /var/www/lms-dbt-front; ## lokasi html build
+        index index.html index.htm index.nginx-debian.html;
+        server_name 128.199.118.63;
+
+        location / {
+                try_files $uri /index.html; ## ditulis /index.html karna ketika direfresh akan ambil dari file index.html (tidak error 404)
+        }
+}
+5. setiap ada perubahan diharapkan restart nginx jika ada perubahan di nginx
+
+
