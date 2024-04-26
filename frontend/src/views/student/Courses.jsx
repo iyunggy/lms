@@ -8,11 +8,13 @@ import Sidebar from "./Partials/Sidebar";
 import Header from "./Partials/Header";
 import useAxios from "../../utils/useAxios";
 import UserData from "../plugin/UserData";
+import { useNavigate } from "react-router-dom";
 
 function Courses() {
   const [courses, setCourses] = useState([]);
   const [stats, setStats] = useState([]);
   const [fetching, setFetching] = useState(true);
+  const nav = useNavigate()
 
   const fetchData = () => {
     setFetching(true);
@@ -155,8 +157,8 @@ function Courses() {
                             </td>
                             <td>
                               {c.completed_lesson?.length < 1 && (
-                                <button className="btn btn-success btn-sm mt-3">
-                                  start Course
+                                <button onClick={() => nav(`/student/courses/watch/${c.course.id}`)} className="btn btn-success btn-sm mt-3">
+                                  Start Course
                                   <i className="fas fa-arrow-right ms-2"></i>
                                 </button>
                               )}

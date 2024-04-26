@@ -42,6 +42,7 @@ import ChangePassword from "./views/instructor/ChangePassword";
 import Profile from "./views/instructor/Profile";
 import CourseCreate from "./views/instructor/CourseCreate";
 import CourseEdit from "./views/instructor/CourseEdit";
+import WatchCourse from "./views/student/WatchCourse";
 
 
 function App() {
@@ -92,6 +93,7 @@ function App() {
                 element={<StudentDashboard />}
               />
               <Route path="/student/courses/" element={<StudentCourses />} />
+              <Route path="/student/courses/watch/:course_id/" element={<WatchCourse />} />
               <Route
                 path="/student/courses/:enrollment_id/"
                 element={<StudentCourseDetail />}
